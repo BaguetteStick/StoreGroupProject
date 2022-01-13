@@ -86,12 +86,16 @@ public class Store {
 		}
 	}
 
+	
+	
 	public void viewAllCustomers() {
 		Queue.printList(customerQueue.first);
 	}
 	
 	public void addCustomer(Customer customer) {
-		customerQueue.enqueue(customer);
+		if(customer.checkOut != null) {
+			customerQueue.enqueue(customer);
+		}
 	}
 	
 	public void removeCustomer() {
