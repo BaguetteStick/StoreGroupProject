@@ -165,17 +165,6 @@ public class Order
         }
     }
     
-    //TEST MAIN
-    public static void main(String[] args) {
-    
-        //TEST ORDER
-        Order order1 = new Order();
-    
-        //TEST TOSTRING
-        System.out.println(order1);
-        
-    }
-    
     //toString that will display all the current items in the order
     public String toString() {
     
