@@ -91,8 +91,28 @@ public class Store {
 		customerQueue.dequeue();
 	}
 	
-	public void creatCustomer() {
-		
-	}
+	public static void main(String[] args) {
+        Customer c1 = new Customer();
+        System.out.println(c1);
+        //hello world
+        Item i1 = new Item("Apple");
+        Item i2 = new Item("Banana");
+        Item i3 = new Item("Apple");
+        Item i4 = new Item("Banana");
+        Item i5 = new Item("Pear");
+        
+        Order o1 = new Order();
+        o1.order.add(i1);
+        o1.order.add(i2);
+        o1.order.add(i3);
+        o1.order.add(i4);
+        o1.order.add(i5);
+        
+        c1.orders.add(o1);
+        System.out.println();
+        //System.out.println(o1.toStringVersion2());
+        System.out.println(c1);
+    }
+
 	
 }
