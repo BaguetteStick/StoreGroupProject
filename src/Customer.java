@@ -64,7 +64,7 @@ public class Customer
     //takes the index+1 of the order the customer wishes to checkout (1 would mean order at index 0)
     public void checkOut(int orderNum) {
         //if number given is out of bounds
-        if(orderNum > orders.size || orderNum <=0) {
+        if(orderNum > orders.size() || orderNum <=0) {
             System.out.println("An order of that number does not exist.");
             return;
         }
