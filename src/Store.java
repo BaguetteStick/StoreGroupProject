@@ -4,18 +4,18 @@ import java.util.*;
 public class Store {
 	//instance variables
 	static Scanner sc = new Scanner(System.in);
-	String address; 
+	Address address; 
 	String name; 
 	ArrayList<Item> itemList;
 	Queue customerQueue = new Queue();
 	
 	public Store() {
-		address = "";
+		address = new Address();
 		name = "";
 		itemList = new ArrayList<Item>(99);
 	}
 	
-	public Store(String address, String name) {
+	public Store(Address address, String name) {
 		this.address = address;
 		this.name = name;
 	}
@@ -98,6 +98,11 @@ public class Store {
 		customerQueue.dequeue();
 	}
 	
+	public void info() {
+		System.out.println(this.address.toString() + " " + this.name + " \n");
+		viewAllCustomers();
+	}
+	
 	public static void main(String[] args) {
 		Store testStore = new Store();
         Customer c1 = new Customer();
@@ -117,6 +122,8 @@ public class Store {
         System.out.println();
         //System.out.println(o1.toStringVersion2());
         System.out.println(c1);
+        
+        testStore.info();
     }
 
 	
