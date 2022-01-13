@@ -12,15 +12,22 @@ public class Store {
 	public Store() {
 		address = "";
 		name = "";
+		itemList = new ArrayList<Item>(99);
+	}
+	
+	public Store(String address, String name) {
+		this.address = address;
+		this.name = name;
 	}
 	
 	public void addItem() {
-		String input;
+		int input;
 		String name; float price; int quantity; String type;
-		System.out.println("What item type would you like to add? \n1. Food   2. Clothing   3. Electronics");
-		input = sc.nextLine();
+		System.out.println("What item type would you like to add to the store? \n1. Food   2. Clothing   3. Electronics");
+		input = Integer.parseInt(sc.nextLine());
+
 		
-		if(input == "1") {
+		if(input == 1) {
 			String expiry;
 			System.out.println("Please enter the name of the item.");
 			name = sc.nextLine();
@@ -33,7 +40,7 @@ public class Store {
 			System.out.println("Please enter the expiry of the item.");
 			expiry = sc.nextLine();
 			itemList.add(new Food(expiry, type, name, price, quantity));
-		} else if(input == "2") {
+		} else if(input == 2) {
 			byte size;
 			String madeFor;
 			System.out.println("Please enter the name of the item.");
@@ -46,10 +53,10 @@ public class Store {
 			type = sc.nextLine();
 			System.out.println("Please enter the size of the item.");
 			size = (byte)Integer.parseInt(sc.nextLine());
-			System.out.println("Please enter the type of item.");
+			System.out.println("Please enter who this is made for.");
 			madeFor = sc.nextLine();
 			itemList.add(new Clothing(size, type, madeFor, name, price, quantity));
-		} else if(input == "3") {
+		} else if(input == 3) {
 			String warrenty;
 			float length;
 		    float width;
@@ -63,15 +70,15 @@ public class Store {
 			quantity = Integer.parseInt(sc.nextLine());
 			System.out.println("Please enter the type of item.");
 			type = sc.nextLine();
-			System.out.println("Please enter the size of the item.");
+			System.out.println("Please enter the warrenty of the item.");
 			warrenty = sc.nextLine();
-			System.out.println("Please enter the type of item.");
+			System.out.println("Please enter the length of item.");
 			length = Float.parseFloat(sc.nextLine());
-			System.out.println("Please enter the type of item.");
+			System.out.println("Please enter the width of item.");
 			width = Float.parseFloat(sc.nextLine());
-			System.out.println("Please enter the type of item.");
+			System.out.println("Please enter the height of item.");
 			height = Float.parseFloat(sc.nextLine());
-			System.out.println("Please enter the type of item.");
+			System.out.println("Please enter the weight of item.");
 			weight = Float.parseFloat(sc.nextLine());
 			itemList.add(new Electronics(warrenty, type, length, width, height, weight, name, price, quantity));
 		} else {
@@ -92,21 +99,19 @@ public class Store {
 	}
 	
 	public static void main(String[] args) {
+		Store testStore = new Store();
         Customer c1 = new Customer();
         System.out.println(c1);
         //hello world
-        Item i1 = new Item("Apple");
-        Item i2 = new Item("Banana");
-        Item i3 = new Item("Apple");
-        Item i4 = new Item("Banana");
-        Item i5 = new Item("Pear");
+        for(int i=0; i<2; i++) {
+        	testStore.addItem();
+        }
+        Item i1 = testStore.itemList.get(0);
+        Item i2 = testStore.itemList.get(1);
         
         Order o1 = new Order();
         o1.order.add(i1);
         o1.order.add(i2);
-        o1.order.add(i3);
-        o1.order.add(i4);
-        o1.order.add(i5);
         
         c1.orders.add(o1);
         System.out.println();
