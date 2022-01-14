@@ -8,16 +8,20 @@ public class Store {
 	String name; 
 	ArrayList<Item> itemList;
 	Queue customerQueue = new Queue();
+	float revenue;
 	
 	public Store() {
 		address = new Address();
 		name = "";
 		itemList = new ArrayList<Item>(99);
+		revenue = 0;
 	}
 	
 	public Store(Address address, String name) {
 		this.address = address;
 		this.name = name;
+		itemList = new ArrayList<Item>(99);
+		revenue = 0;
 	}
 	
 	public void addItem() {
@@ -86,7 +90,18 @@ public class Store {
 		}
 	}
 
-	
+	public void makePurchase() {
+		if(customerQueue.first.cargo.checkOut != null) {
+			float orderCost = 0;
+			for(int i=0; i<customerQueue.first.cargo.checkOut.order.size(); i++) {
+				orderCost += customerQueue.first.cargo.checkOut.order.get(i).price;
+			}
+			this.revenue += orderCost;
+		}
+		customerQueue.first.cargo.checkOut = null;
+		customerQueue.dequeue();
+	}
+
 	
 	public void viewAllCustomers() {
 		Queue.printList(customerQueue.first);
