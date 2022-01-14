@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Person can add and remove items from their order, along with display what is currently available using the toString
  *
  * Graham Gee
- * Version 5
+ * Version 7
  */
 public class Order
 {
@@ -32,27 +32,31 @@ public class Order
        
         }
         
+        //Set the total to 0
+        this.total = 0f;
+        
         //Create the arraylist for the order
         this.order = new ArrayList<Item>();
         this.copy = new ArrayList<Item>();
-        
-        //Prompts user with the creation of the new order + order id
-        System.out.println("A new order has been created\nYour order ID is: " + this.orderID + "\n");
         
     }
     
     //Adds an item to the arraylist
     public void addItem(Item item) {
     
-        //Adds item to the list
-        this.order.add(item);
+        for(int i = 0; i < item.quantity; i++) {
         
-        //Add to the total
-        this.total += item.price;
+            //Adds item to the list
+            this.order.add(item);
+        
+            //Add to the total
+            this.total += item.price;
+        
+        }
         
         //Prompt the user
         System.out.println("You added " + item.name + " to your order.\n the total is now $" + this.total);
-    
+        System.out.println("You added " + item.quantity + " of this item to your order.");
     }
     
     //Removes an item from the arraylist
@@ -163,28 +167,5 @@ public class Order
             return false;
             
         }
-    }
-    
-    //toString that will display all the current items in the order
-    public String toString() {
-    
-        //Clear the copy so that if toString is called twice, it doesn't mess up
-        copy.clear();
-        
-        //Create a message string for the output
-        String message = "Order #" + this.orderID;
-        
-        for(int i = 0; i < order.size(); i++) {
-        
-            message = message + stringAdd(order.get(i), i);
-        
-        }
-        
-        //Add the total
-        message = message + "\n\nYour total is: $" + this.total;
-        
-        //Return the completed message
-        return message;
-    
     }
 }
