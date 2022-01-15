@@ -123,27 +123,36 @@ public class Store {
 	}
 	
 	public static void main(String[] args) {
-		Store testStore = new Store();
+        Store testStore = new Store();
         Customer c1 = new Customer();
-        System.out.println(c1);
-        //hello world
-        for(int i=0; i<2; i++) {
-        	testStore.addItem();
-        }
-        Item i1 = testStore.itemList.get(0);
-        Item i2 = testStore.itemList.get(1);
+        //System.out.println(c1);
         
+
+        Item i1 = new Item("Apple",4.45f,2);
+        Item i2 = new Item("Banana",2.99f,4);
+        Item i5 = new Item("Pear",3.33f,1);
+
         Order o1 = new Order();
-        o1.order.add(i1);
-        o1.order.add(i2);
-        
+        o1.addItem(i1);
+        o1.addItem(i2);
+        o1.addItem(i1);
+        //o1.addItem(i4);
+        o1.addItem(i5);
+
+        // testStore.itemList.add(i2);
+        // testStore.itemList.add(i1);
+
         c1.orders.add(o1);
         System.out.println();
         //System.out.println(o1.toStringVersion2());
         System.out.println(c1);
         
+        //String st, String ci, String ps, String pz, String co
+        Address a1 = new Address("103 Malvern Dr.","Nepean","ON","K2J 4T2","Canada");
+        
+        testStore.address = a1;
+
         testStore.info();
     }
-
 	
 }
